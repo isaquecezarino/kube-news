@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage{'build Docker image'}
+            steps {
+                scrip{
+                    dockerapp = docker.build("isaquecezarino/kube-new:${env.BUILD_ID}", '-f ./src/Dockerfile ./src')
+                }
+            }
+    }
+}
